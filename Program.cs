@@ -8,7 +8,6 @@ namespace WinFormsApp1
         [STAThread]
         static void Main()
         {
-            var bi = new BaserInterp();
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
