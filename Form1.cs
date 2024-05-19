@@ -1,4 +1,5 @@
 using Interpolation;
+using System.Collections;
 
 namespace WinFormsApp1
 {
@@ -40,12 +41,39 @@ namespace WinFormsApp1
 			};
 
 			var interpolation = new LinearInterpolation(datax, datay, 4);
+			var dx = new List<float>();
+            var dy = new List<float>();
+            for (int i = 0;i < 360; i++)
+			{
+				if(i > 70 && i < 110)
+				{
+					continue;
+				}
 
+				dx.Add(i);
+				dy.Add(interpolation.interpolate(i));
+			}
+			dx.Add(80);
+			dy.Add(85);
+			dx.Add(90);
+			dy.Add(90);
+			dx.Add(100);
+			dy.Add(95);
+
+			
+
+			float[] ddx = dx.ToArray();
+			float[] ddy = dy.ToArray();
+
+			Array.Sort(ddx);
+			Array.Sort(ddy);
+
+			var pol = new SplineInterpolation(ddx, ddy);
 			float[] res = new float[360];
 			for (int i = 0; i < res.Length; i++) {
-				res[i] = interpolation.interpolate(i);
+				res[i] = pol.interpolate(i);
 			}
-			Console.WriteLine(interpolation);
+
 			formsPlot1.Plot.Add.Signal(res);
 			formsPlot1.Refresh();
 		}
