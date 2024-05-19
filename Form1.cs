@@ -1,4 +1,4 @@
-using ClassLibrary1;
+using Interpolation;
 
 namespace WinFormsApp1
 {
@@ -13,22 +13,20 @@ namespace WinFormsApp1
 			// Add the FormsPlot
 			formsPlot1 = new() { Dock = DockStyle.Fill };
 			this.Controls.Add(formsPlot1);
-            float[] datax =
-            {
-                0, 5,10
-            };
-            float[] datay =
+			float[] datax = new float[360];
+			float[] datay = new float[360];
+			for (int i = 0; i < 360; i++)
 			{
-				2.0f, 4.0f,6.0f
-			};
+				datax[i] = (float)i;
+				datay[i] = (float)i;
+			}
+			var interpolation = new PolynomialInterpolation(datax, datay, 3);
 
-			LinearInterpolation interpolation = new LinearInterpolation(datax, datay, 2);
-
-			float[] res = new float[10];
+			float[] res = new float[360];
 			for (int i = 0; i < res.Length; i++) {
 				res[i] = interpolation.interpolate(i);
 			}
-
+			Console.WriteLine(interpolation);
 			formsPlot1.Plot.Add.Signal(res);
 			formsPlot1.Refresh();
 		}
