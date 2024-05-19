@@ -74,7 +74,14 @@ namespace WinFormsApp1
 				res[i] = pol.interpolate(i);
 			}
 
+			float[] linear = new float[360];
+			for(int i = 0; i < linear.Length; i++)
+			{
+                linear[i] = interpolation.interpolate(i);
+			}
+
 			formsPlot1.Plot.Add.Signal(res);
+			formsPlot1.Plot.Add.Signal(linear);
 			formsPlot1.Refresh();
 		}
 	}
