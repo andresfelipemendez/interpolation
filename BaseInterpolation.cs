@@ -130,7 +130,7 @@ namespace Interpolation
             jsav = jl;
             return Math.Max(0, Math.Min(N - mm, jl - ((mm - 2) >> 1)));
         }
-        public float interpolate(float x)
+        public virtual float interpolate(float x)
         {
             int jlo = cor == 1 ? hunt(x) : locate(x);
            // return locate(x);

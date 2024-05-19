@@ -68,7 +68,7 @@ namespace WinFormsApp1
 			Array.Sort(ddx);
 			Array.Sort(ddy);
 
-			var pol = new SplineInterpolation(ddx, ddy);
+			var pol = new BarycentricRationalInterpolation(ddx, ddy,4);
 			float[] res = new float[360];
 			for (int i = 0; i < res.Length; i++) {
 				res[i] = pol.interpolate(i);
