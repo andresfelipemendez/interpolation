@@ -13,14 +13,33 @@ namespace WinFormsApp1
 			// Add the FormsPlot
 			formsPlot1 = new() { Dock = DockStyle.Fill };
 			this.Controls.Add(formsPlot1);
-			float[] datax = new float[360];
-			float[] datay = new float[360];
-			for (int i = 0; i < 360; i++)
+			//float[] datax = new float[360];
+			//float[] datay = new float[360];
+			//for (int i = 0; i < 360; i++)
+			//{
+			//	datax[i] = (float)i;
+			//	datay[i] = (float)i;
+			//}
+
+			float[] datax =
 			{
-				datax[i] = (float)i;
-				datay[i] = (float)i;
-			}
-			var interpolation = new PolynomialInterpolation(datax, datay, 3);
+				0,
+				80,
+				90,
+				100,
+				360
+			};
+
+			float[] datay =
+			{
+				0,
+				85,
+				90,
+				95,
+				360
+			};
+
+			var interpolation = new LinearInterpolation(datax, datay, 4);
 
 			float[] res = new float[360];
 			for (int i = 0; i < res.Length; i++) {
